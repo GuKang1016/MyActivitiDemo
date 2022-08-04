@@ -19,6 +19,8 @@ package activiti.basic.task.example.src.test.java.org.activiti.examples;/*
 
 public class DemoApplicationTests {
 
+
+
 	public void contextLoads() {
 	}
 

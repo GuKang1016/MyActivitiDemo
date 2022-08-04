@@ -20,38 +20,39 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 
 public class WordToHtml {
-    public static void main(String argv[]) {
-        try {
-            // 方法一：
-             String content=wordToHtml("D:\\Desktop\\test.docx");
-             System.out.println(content);
-
-            HWPFDocumentCore wordDocument = WordToHtmlUtils.loadDoc(new FileInputStream("D:\\Desktop\\test.doc"));
-
-            WordToHtmlConverter wordToHtmlConverter = new WordToHtmlConverter(
-                    DocumentBuilderFactory.newInstance().newDocumentBuilder()
-                            .newDocument());
-            wordToHtmlConverter.processDocument(wordDocument);
-            Document htmlDocument = wordToHtmlConverter.getDocument();
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            DOMSource domSource = new DOMSource(htmlDocument);
-            StreamResult streamResult = new StreamResult(out);
-
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer serializer = tf.newTransformer();
-            serializer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            serializer.setOutputProperty(OutputKeys.INDENT, "yes");
-            serializer.setOutputProperty(OutputKeys.METHOD, "html");
-            serializer.transform(domSource, streamResult);
-            out.close();
-
-            String result = new String(out.toByteArray());
-            System.out.println(result);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String argv[]) {
+//        try {
+//            // 方法一：
+//             String content=wordToHtml("D:\\Desktop\\test.docx");
+//             System.out.println(content);
+//
+//            HWPFDocumentCore wordDocument = WordToHtmlUtils.loadDoc(new FileInputStream("D:\\Desktop\\test.doc"));
+//
+//            WordToHtmlConverter wordToHtmlConverter = new WordToHtmlConverter(
+//                    DocumentBuilderFactory.newInstance().newDocumentBuilder()
+//                            .newDocument());
+//            wordToHtmlConverter.processDocument(wordDocument);
+//            Document htmlDocument = wordToHtmlConverter.getDocument();
+//            ByteArrayOutputStream out = new ByteArrayOutputStream();
+//            DOMSource domSource = new DOMSource(htmlDocument);
+//            StreamResult streamResult = new StreamResult(out);
+//
+//            TransformerFactory tf = TransformerFactory.newInstance();
+//            Transformer serializer = tf.newTransformer();
+//            serializer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+//            serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+//            serializer.setOutputProperty(OutputKeys.METHOD, "html");
+//            serializer.transform(domSource, streamResult);
+//            out.close();
+//
+//            String result = new String(out.toByteArray());
+//            System.out.println(result);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
     public static String wordToHtml(String filePath) throws Exception{
         if(filePath.endsWith(".doc")){
             String content=convert2Html(filePath);
